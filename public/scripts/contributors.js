@@ -49,7 +49,7 @@ function renderContributors(contributors) {
                         </div>
                         <div class="card-body text-center">
                             <h5 class="contributor-name">${contributor.name}</h5>
-                            <p class="contributor-bio">${truncateBio(contributor.bio, 150)}</p>
+                            <p class="contributor-bio">${truncateBio(contributor.bio, 1000)}</p>
                             ${contributor.website ? `
                                 <div class="contributor-links">
                                     <a href="${contributor.website}" target="_blank" class="website-link">
