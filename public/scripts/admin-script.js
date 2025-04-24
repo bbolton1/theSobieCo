@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchContributors();
     
     // Setup event listeners
-    document.getElementById('refreshBtn').addEventListener('click', fetchContributors);
     document.getElementById('approveBtn').addEventListener('click', () => updateContributorStatus('approved'));
     document.getElementById('rejectBtn').addEventListener('click', () => updateContributorStatus('rejected'));
     
