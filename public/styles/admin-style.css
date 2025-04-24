@@ -1,0 +1,43 @@
+.admin-header {
+    background-color: #343a40;
+    color: white;
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+.contributor-card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.card-header-pending {
+    background-color: #fff3cd;
+}
+.card-header-approved {
+    background-color: #d1e7dd;
+}
+.card-header-rejected {
+    background-color: #f8d7da;
+}
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+.contributor-count {
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+}
+.pending-count {
+    background-color: #fff3cd;
+    color: #856404;
+}
+.approved-count {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+.rejected-count {
+    background-color: #f8d7da;
+    color: #842029;
+}

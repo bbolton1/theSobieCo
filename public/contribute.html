@@ -5,25 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contributor Submission</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .submission-form {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-        .form-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .form-footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #6c757d;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/add-dev.css">
+
 </head>
 <body>
     <div class="container">
@@ -58,7 +41,7 @@
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-primary">Submit Profile</button>
                 </div>
-                
+
                 <div class="d-grid gap-4">
                     <a href="contributors.html" class="btn back-button">Back</a>
                 </div>
@@ -67,68 +50,14 @@
             <div class="form-footer">
                 <p>Your submission will be reviewed by an admin before being displayed on our contributors page.</p>
             </div>
-            
+
             <!-- Success/Error Alert (hidden by default) -->
             <div class="alert mt-3" id="formAlert" role="alert" style="display: none;"></div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/add-user.js"></script>
     
-    <script>
-        document.getElementById('contributorForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const bio = document.getElementById('bio').value;
-            const website = document.getElementById('website').value;
-            const email = document.getElementById('email').value;
-            
-            // Create request body
-            const contributorData = {
-                name,
-                bio,
-                website,
-                email,
-                status: 'pending' // Initial status
-            };
-            
-            try {
-                const response = await fetch('/api/contributors', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(contributorData)
-                });
-                
-                const result = await response.json();
-                
-                if (response.ok) {
-                    // Show success message
-                    const alertEl = document.getElementById('formAlert');
-                    alertEl.className = 'alert alert-success mt-3';
-                    alertEl.textContent = 'Your profile has been submitted and is pending review!';
-                    alertEl.style.display = 'block';
-                    
-                    // Reset form
-                    document.getElementById('contributorForm').reset();
-                } else {
-                    // Show error message
-                    const alertEl = document.getElementById('formAlert');
-                    alertEl.className = 'alert alert-danger mt-3';
-                    alertEl.textContent = result.message || 'There was an error submitting your profile';
-                    alertEl.style.display = 'block';
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                const alertEl = document.getElementById('formAlert');
-                alertEl.className = 'alert alert-danger mt-3';
-                alertEl.textContent = 'Network error occurred. Please try again later.';
-                alertEl.style.display = 'block';
-            }
-        });
-    </script>
 </body>
 </html>
