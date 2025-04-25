@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -11,6 +10,10 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(bodyParser.json());
 app.use(express.static('public'));
+
+// Set EJS as templating engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // Connect to MongoDB with better error handling
 mongoose.connect(process.env.MONGO_URI, {
@@ -144,20 +147,26 @@ app.delete('/api/contributors/:id', async (req, res) => {
     }
 });
 
-// Serve the contributor form page
-app.get('/contribute', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'contribute.html'));
-});
-
-// Serve the admin dashboard
-app.get('/admin/contributors', (req, res) => {
-    // In a real application, you'd add authentication middleware here
-    res.sendFile(path.join(__dirname, 'public', 'admin-dashboard.html'));
+// Updated routes to use EJS templates
+app.get('/', (req, res) => {
+    // Redirect root URL directly to contributors page
+    res.redirect('/contributors');
 });
 
 // Serve the public contributors page
 app.get('/contributors', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'contributors.html'));
+    res.render('contributors');
+});
+
+// Serve the contributor form page
+app.get('/contribute', (req, res) => {
+    res.render('contribute');
+});
+
+// Serve the admin dashboard
+app.get('/admin', (req, res) => {
+    // In a real application, you'd add authentication middleware here
+    res.render('admin-dashboard');
 });
 
 // Start server
