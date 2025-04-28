@@ -1,0 +1,199 @@
+/* 🎓 brittneydaniel 4.26.2025 iss #24 LAYOUT#5 */
+
+h1,
+h2 {
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+  color: #2c3e50;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #4a5568;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 12px 18px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+li a:hover {
+  background-color: #e1ae46;
+  color: #2c3e50;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #ffffff;
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #ffffff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.sobie-history {
+  background-color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 750px;
+  margin: 3rem auto;
+  font-family: "Segoe UI", sans-serif;
+  color: #333;
+}
+
+.sobie-history h2 {
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.sobie-history p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+.sobie-mission {
+  background-color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 750px;
+  margin: 2rem auto;
+  font-family: "Segoe UI", sans-serif;
+  color: #2c3e50;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sobie-mission h2 {
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.sobie-mission p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #444;
+  text-align: left;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: #ddd;
+  margin: 2rem auto;
+  width: 80%;
+}
+
+.sobie-jobie {
+  background-color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 750px;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.sobie-jobie h2 {
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.sobie-jobie p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #2c3e50; /* SOBIE navy */
+  text-align: left;
+}
+
+.sobie-jobie a {
+  color: #2c3e50;
+  text-decoration: underline;
+}
+
+.sobie-jobie a:hover {
+  color: #f1c40f;
+}
+
+
+.footer-bar {
+  background-color: #2c3e50;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.95rem;
+  margin-top: 3rem;
+}
+
+.footer-bar a {
+  color: #f1c40f;
+  text-decoration: none;
+}
+
+.footer-bar a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+/* allisons CSS code for home page */
+
+
+
+
+/* Checklist formatting inside the jobie card */
+.sobie-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+
+.sobie-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #2c3e50;
+}
+
+.sobie-list input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+  vertical-align: middle;
+  margin-top: -2px; 
+}
+
+.sobie-list a {
+  color: #2c3e50;
+  text-decoration: underline;
+}
+
+.sobie-list a:hover {
+  color: #f1c40f;
+}

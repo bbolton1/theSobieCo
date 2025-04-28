@@ -7,12 +7,18 @@ router.use(function (req, res, next) {
   next();
 });
 
-router.get("/", function (req, res, next) {
-  res.render("index", { pageTitle: "SOBIE" });
+router.get('/', function(req, res, next) {
+    res.render('index', { pageTitle: 'Home Page'});
 });
 
-router.get("/home", function (req, res, next) {
-  res.render("home");
+router.get('/allison_home', function(req, res, next) {
+    res.render('allisonl_home', { pageTitle: 'Home Page'});
+});
+
+// 🎓 brittneydaniel 4.26.2025 iss #24 LAYOUT#5
+router.get('/brittany-about', function(req, res, next) {
+    res.render('bdaniel', {pageTitle: 'About Page'});
+
 });
 
 router.get("/home/latestConferenceInfo", async function (req, res, next) {

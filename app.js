@@ -76,7 +76,9 @@ app.use('/register', require('./controllers/RegisterController'));
 // 🪣@OmarVCRZ 4.25.2025 iss#1 (attaches the routes to the server)
 app.use('/', require('./controllers/AuthController'));
 
-const server = app.listen(3000, function() {
+// 🎓 brittneydaniel 4.26.2025 iss #24 LAYOUT#5
+//Adding functionality to run in render
+const server = app.listen(process.env.PORT || 3000, function() {
   const host = server.address().address;
   const port = server.address().port;
 
