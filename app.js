@@ -1,7 +1,6 @@
 // 🪣@OmarVCRZ 4.25.2025 iss#1
 require('dotenv').config(); // .env loading
 
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
@@ -9,8 +8,11 @@ const session = require('express-session');
 const csurf = require('csurf');
 const path = require('path');
 
-// 🪣@OmarVCRZ 4.25.2025 iss#1
-const { MongoClient } = require('mongodb')
+// 🐝@OmarVCRZ 4.25.2025 iss#1 (imports)
+const mongoose = require('mongoose');
+
+// // 🪣@OmarVCRZ 4.25.2025 iss#1
+// const { MongoClient } = require('mongodb')
 
 // 🪣@OmarVCRZ 4.25.2025 iss#1
 const HomeController = require('./controllers/HomeController');
@@ -55,20 +57,25 @@ app.use((req, res, next) => {
   next();
 });
 
-// 🪣@OmarVCRZ 4.25.2025 iss#1 (MongoDB Connection)
-const uri = process.env.MONGO_URI;
-const client = new MongoClient(uri);
+// 🐝@OmarVCRZ 4.25.2025 iss#1 (MongoDB Connection)
+mongoose.connect(process.env.MONGO_URI)
+     .then(() => console.log("MongoDB Connected!"))
+     .catch(err => console.error("MongoDB Connection Failure:", err));
 
-async function connectDB() {
-  try {
-    await client.connect();
-    console.log("MongoDB Connected");
-  } catch (err) {
-    console.error("MongoDB Connection Failure:", err);
-  }
-}
+// // 🪣@OmarVCRZ 4.25.2025 iss#1 (MongoDB Connection)
+// const uri = process.env.MONGO_URI_OMAR;
+// const client = new MongoClient(uri);
 
-connectDB();
+// async function connectDB() {
+//   try {
+//     await client.connect();
+//     console.log("MongoDB Connected");
+//   } catch (err) {
+//     console.error("MongoDB Connection Failure:", err);
+//   }
+// }
+
+// connectDB();
 
 // 🪣@OmarVCRZ 4.25.2025 iss#1 (Load Routes AFTER session + csrf middleware) 
 app.use('/', require('./controllers/HomeController'));
