@@ -1,0 +1,50 @@
+<%- include('partials/header', {title: 'Contributor Submission', cssFile: 'add-dev'}); %>
+
+<div class="container">
+    <div class="submission-form">
+        <div class="form-header">
+            <h2>Become a Contributor</h2>
+            <p class="text-muted">Join our team by submitting your developer profile</p>
+        </div>
+        
+        <form id="contributorForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="bio" class="form-label">Bio</label>
+                <textarea class="form-control" id="bio" rows="4" placeholder="Tell us about yourself, your skills, and experience..." required></textarea>
+            </div>
+            
+            <div class="mb-3">
+                <label for="website" class="form-label">Website URL</label>
+                <input type="url" class="form-control" id="website" placeholder="https://yourwebsite.com">
+            </div>
+            
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" required>
+                <div class="form-text">We'll use this to notify you about your submission status.</div>
+            </div>
+            
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Submit Profile</button>
+            </div>
+
+            <div class="d-grid gap-4">
+                <a href="/contributors" class="btn back-button">Back</a>
+            </div>
+        </form>
+        
+        <div class="form-footer">
+            <p>Your submission will be reviewed by an admin before being displayed on our contributors page.</p>
+        </div>
+
+        <!-- Success/Error Alert (hidden by default) -->
+        <div class="alert mt-3" id="formAlert" role="alert" style="display: none;"></div>
+    </div>
+</div>
+
+<%- include('partials/footer', {jsFile: 'add-user'}); %>
