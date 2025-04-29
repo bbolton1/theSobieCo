@@ -1,0 +1,326 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400&family=Dancing+Script:wght@500&family=REM&family=Marck+Script&family=Nova+Square&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+/* Google font usage
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Marck Script', cursive;
+    font-family: 'Nova Square', sans-serif;
+    font-family: 'REM', sans-serif;
+*/
+
+body {
+    margin-top: 81px;
+    font-family: "Golos Text", serif;
+    font-size: 16px;
+}
+
+.sobie-logo {
+    border: solid 1px gray;
+}
+
+.sobie-link {
+    border: solid 1px black;
+}
+
+.navbar-brand {
+    font-family: 'REM', sans-serif;
+}
+
+.sobie-Script {
+    font-family: 'Nova Square', sans-serif;
+}
+
+li > .active {
+    background-color: lightgray;
+}
+
+.active > .alert-heading {
+    background-color: lightgray;
+}
+
+/* #navSobie {}
+
+#navSobieLogo {} */
+
+a:hover {
+    text-decoration: underline;
+}
+/* Logo Button Styling */
+#navSobieLogo{
+    padding: 5px 10px;
+    display: inline-block;
+    background: linear-gradient(to right, #ffb82a82 0%,#5462469a 50%, #ffffff 50%, #ffffff 100%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    transition: background-position 0.3s;
+    /* blue color  rgba(8, 75, 169, 0.805),rgba(8, 75, 169, 0.209) */
+}
+
+#navSobieLogo:hover{
+    background-position:0 0;
+}
+
+/* Alert Card on Front Page Styling */
+.alert{
+    background-color: #fbe6be; 
+    color: #000000; 
+    border-color: #b07601;
+    border-radius: 8px;         /* Rounded corners */
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05); /* Subtle shadow */
+}
+.alert-body a {
+    /* color: #007bff;                  Blue links */
+    color: #f7b739;             /* Green links */
+}
+.alert-body a:hover {
+    /*   color: #0056b3;              Darker blue on hover */
+    color: #b07601;             /* Darker green on hover */
+}
+
+/* Card Header Styling - Uniform dark blue */
+.card-header {
+    /* background-color: #003366;   Dark blue */
+    background-color: #546246;  /* Dark green */
+    color: white;               /* White text */
+    padding: 15px;              /* Added padding */
+}
+
+/* Card Body Styling - Light grey background with dark text */
+.card-body {
+    background-color: #f8f9fa;  /* Light grey */
+    color: #333333;             /* Dark text */
+    padding: 20px;              /* Added padding */
+}
+
+/* Card Footer Styling - Light blue background */
+.card-footer {
+    background-color: #5462469a;  /* Light blue */
+    color: white;               /* White text */
+    padding: 10px;              /* Added padding */
+    text-align: center;         /* Center the footer content */
+}
+
+/* Apply consistent borders to cards */
+.card {
+    /* border: 1px solid #007bff;  Blue border */
+    /* border: 1px solid #546246; Green Border */
+    border-radius: 8px;         /* Rounded corners */
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05); /* Subtle shadow */
+
+}
+
+/* Button Styling for all cards */
+.card .btn-primary {
+    background-color: #546246;  /* Green Background */
+    /* background-color: #007bff;  Blue background */
+    color: white;               /* White text */
+    padding: 10px 20px;         /* Add padding */
+    border: none;               /* Removing border */
+}
+
+.card .btn-primary:hover {
+    /* background-color: #0056b3;  Darker blue on hover */
+    background-color: #5462469a;  /* Darker green on hover */
+    transform: scale(1.01);
+	box-shadow: 0 10px 20px #546246, 0 4px 8px rgba(0,0,0,.06);
+}
+
+/* Button Styling for 'Warning' and 'Danger' */
+.card .btn-warning {
+    background-color: #ffc107;  /* Yellow button */
+    color: white;
+}
+
+.card .btn-warning:hover {
+    background-color: #e0a800;  /* Darker yellow on hover */
+}
+
+.card .btn-danger {
+    background-color: #dc3545;  /* Red button */
+    color: white;
+}
+
+.card .btn-danger:hover {
+    background-color: #c82333;  /* Darker red on hover */
+}
+
+/* Button Styling for Nav Bar */
+#navBtn{
+    border: none; 
+    background-color: transparent;
+    color:  black;
+}
+
+#navBtn:hover{
+    color: #546246;
+    /* blue color rgba(8, 75, 169, 0.805) */
+}
+
+/* Links inside the cards */
+.card-body a {
+    /* color: #007bff;                  Blue links */
+    color: #5462469a;             /* Green links */
+}
+
+.card-body a:hover {
+    /*   color: #0056b3;              Darker blue on hover */
+    color: #546246;             /* Darker green on hover */
+}
+
+/* Card consistency: Ensure all cards have the same height */
+.card.h-100 {
+    height: 100%;               /* Equal height for all cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Spacing between cards */
+.card-body, .card-footer {
+    padding: 1rem;              /* Consistent padding inside cards */
+}
+
+/* Margins for rows and columns to maintain spacing */
+.row {
+    margin-bottom: 1.5rem;      /* Spacing between card rows */
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 767px) {
+    .col-md-6 {
+        margin-bottom: 1rem;      /* Margin between columns on small screens */
+    }
+}   
+
+/* Proceedings and Programs Styling */
+#proImg{ /*program and proceedings images */
+    width:155px;
+    height:250px;
+}
+
+#proCard{ /*program and proceedings cards */
+    width:170px;
+    height:295px;
+    text-align: center;
+}
+
+#proCard:hover{ /*program and proceedings cards */
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px #5462469a, 0 4px 8px rgba(0,0,0,.06);
+    /* blue color rgba(8, 75, 169, 0.209) */
+}
+
+/*what i created */
+/*Bordered form*/
+form {
+    border: 3px solid #f1f1f1;
+  }
+  
+  /*Fill-width inputs*/
+  input[type="text"],
+  input[type="adminPwd"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Set a style for all buttons*/
+  button {
+    background-color: #89b47f;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /*hover effect*/
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+  
+  .container {
+    padding: 16px;
+  }
+  
+  /*forgot password text*/
+  span.password {
+    float: right;
+    padding-top: 16px;
+  }
+  
+  @media screen and (max-width: 300px) {
+    span.password {
+      display: block;
+      float: none;
+    }
+    .cancelbtn {
+      width: 100%;
+    }
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1050 !important;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+  }
+
+  .modal-backdrop {
+    z-index: 1040 !important;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5px auto;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+  
+  .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s;
+  }
+  
+  @-webkit-keyframes animatezoom {
+    from {
+      -webkit-transform: scale(0);
+    }
+    to {
+      -webkit-transform: scale(1);
+    }
+  }
+  

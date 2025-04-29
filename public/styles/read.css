@@ -1,0 +1,133 @@
+.registrant-page {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.registrant-page h1 {
+    text-align: center;
+    color: #3498db;
+}
+
+.registrant-page form {
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+.registrant-page form label,
+.registrant-page form input {
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+.registrant-page form input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.registrant-page form input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+.registrant-page h3 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+.registrant-page .registrant-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.registrant-page .registrant-list li {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.registrant-page .registrant-list li h4 {
+    margin-top: 0;
+    color: #3498db;
+}
+
+.registrant-page .registrant-link {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.registrant-page .registrant-link:hover {
+    text-decoration: underline;
+}
+
+.profile body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .profile .container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+  }
+  
+  .profile h1 {
+    text-align: center;
+    color: #2c3e50;
+  }
+  
+  .profile table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .profile table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .profile table th {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .profile table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .profile button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: block;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .profile button:hover {
+    background-color: #2980b9;
+  }
+  
