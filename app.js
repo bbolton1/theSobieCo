@@ -1,93 +1,172 @@
-// 🪣@OmarVCRZ 4.25.2025 iss#1
-require('dotenv').config(); // .env loading
-
 const express = require('express');
-const bodyParser = require('body-parser');
-const multer = require('multer');
-const session = require('express-session');
-const csurf = require('csurf');
-const path = require('path');
-
-// 🐝@OmarVCRZ 4.25.2025 iss#1 (imports)
 const mongoose = require('mongoose');
-
-// // 🪣@OmarVCRZ 4.25.2025 iss#1
-// const { MongoClient } = require('mongodb')
-
-// 🪣@OmarVCRZ 4.25.2025 iss#1
-const HomeController = require('./controllers/HomeController');
-const RegisterController = require('./controllers/RegisterController');
-const AuthController = require('./controllers/AuthController');
+const bodyParser = require('body-parser');
+const path = require('path');
+require('dotenv').config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.use('/documents', express.static(__dirname + '/public/documents'));
-app.use('/scripts', express.static(__dirname + '/public/scripts'));
-app.use('/styles', express.static(__dirname + '/public/styles'));
-// 🪣@OmarVCRZ 4.25.2025 iss#1
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Body Parsing
+// Middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static('public'));
 
-// 🪣@OmarVCRZ 4.25.2025 iss#1 (View Engine Setup)
-app.set('views', path.join(__dirname, 'views'));
+// Set EJS as templating engine
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-// CORS Headers
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  next();
+// Connect to MongoDB with better error handling
+mongoose.connect(process.env.MONGO_URI_BZ, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log('Connected to MongoDB successfully');
+    // Test database connection
+    mongoose.connection.db.admin().ping().then(() => {
+        console.log('MongoDB ping successful - database is responsive');
+    }).catch(err => {
+        console.error('MongoDB ping failed:', err);
+    });
+}).catch(err => {
+    console.error('Error connecting to MongoDB:', err);
+    console.error('Connection string (without password):', 
+        process.env.MONGO_URI_BZ.replace(/:[^:@]+@/, ':****@'));
 });
 
-// 🪣@OmarVCRZ 4.25.2025 iss#1 (Session Setup)
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false
-}));
-
-// 🪣@OmarVCRZ 4.25.2025 iss#1 (CSRF Protection)
-app.use(csurf());
-app.use((req, res, next) => {
-  res.locals.csrfToken = req.csrfToken();
-  next();
+// Add this right after your MongoDB connection
+mongoose.connection.on('error', (err) => {
+    console.error('MongoDB connection error:', err);
 });
 
-// 🐝@OmarVCRZ 4.25.2025 iss#1 (MongoDB Connection)
-mongoose.connect(process.env.MONGO_URI_OMAR)
-     .then(() => console.log("MongoDB Connected!"))
-     .catch(err => console.error("MongoDB Connection Failure:", err));
+// Contributor Schema
+const contributorSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    bio: { type: String, required: true },
+    website: { type: String },
+    email: { type: String, required: true },
+    status: { 
+        type: String, 
+        enum: ['pending', 'approved', 'rejected'],
+        default: 'pending'
+    },
+    createdAt: { type: Date, default: Date.now }
+});
 
-// // 🪣@OmarVCRZ 4.25.2025 iss#1 (MongoDB Connection)
-// const uri = process.env.MONGO_URI_OMAR;
-// const client = new MongoClient(uri);
+const Contributor = mongoose.model('Contributor', contributorSchema);
 
-// async function connectDB() {
-//   try {
-//     await client.connect();
-//     console.log("MongoDB Connected");
-//   } catch (err) {
-//     console.error("MongoDB Connection Failure:", err);
-//   }
-// }
+// API Routes
+// 1. Create new contributor profile
+app.post('/api/contributors', async (req, res) => {
+    try {
+        const contributor = new Contributor(req.body);
+        await contributor.save();
+        res.status(201).json({ message: 'Contributor profile submitted successfully!', id: contributor._id });
+    } catch (error) {
+        res.status(400).json({ message: 'Error submitting profile', error: error.message });
+    }
+});
 
-// connectDB();
+// 2. Get all contributors (for admin dashboard)
+app.get('/api/contributors', async (req, res) => {
+    try {
+        const status = req.query.status; // Optional filter by status
+        let query = {};
+        
+        if (status) {
+            query.status = status;
+        }
+        
+        const contributors = await Contributor.find(query).sort({ createdAt: -1 });
+        res.json(contributors);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching contributors', error: error.message });
+    }
+});
 
-// 🪣@OmarVCRZ 4.25.2025 iss#1 (Load Routes AFTER session + csrf middleware) 
-app.use('/', require('./controllers/HomeController'));
-app.use('/register', require('./controllers/RegisterController'));
-// 🪣@OmarVCRZ 4.25.2025 iss#1 (attaches the routes to the server)
-app.use('/', require('./controllers/AuthController'));
+// 3. Get public approved contributors
+app.get('/api/contributors/approved', async (req, res) => {
+    try {
+        const contributors = await Contributor.find({ status: 'approved' })
+            .select('-email -status') // Exclude private fields
+            .sort({ createdAt: -1 });
+        res.json(contributors);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching approved contributors', error: error.message });
+    }
+});
 
-// 🎓 brittneydaniel 4.26.2025 iss #24 LAYOUT#5
-//Adding functionality to run in render
-const server = app.listen(process.env.PORT || 3000, function() {
-  const host = server.address().address;
-  const port = server.address().port;
+// 4. Get single contributor by ID
+app.get('/api/contributors/:id', async (req, res) => {
+    try {
+        const contributor = await Contributor.findById(req.params.id);
+        if (!contributor) {
+            return res.status(404).json({ message: 'Contributor not found' });
+        }
+        res.json(contributor);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching contributor', error: error.message });
+    }
+});
 
-  console.log("Server is running on http://%s:%s", host, port);
+// 5. Update contributor status (for admin)
+app.put('/api/contributors/:id', async (req, res) => {
+    try {
+        // Verify admin using middleware (implementation depends on your auth system)
+        // For simplicity, I'm not including auth middleware here
+        
+        const contributor = await Contributor.findByIdAndUpdate(
+            req.params.id,
+            { $set: req.body },
+            { new: true, runValidators: true }
+        );
+        
+        if (!contributor) {
+            return res.status(404).json({ message: 'Contributor not found' });
+        }
+        
+        res.json({ message: 'Contributor updated successfully', contributor });
+    } catch (error) {
+        res.status(400).json({ message: 'Error updating contributor', error: error.message });
+    }
+});
+
+// 6. Delete contributor
+app.delete('/api/contributors/:id', async (req, res) => {
+    try {
+        const contributor = await Contributor.findByIdAndDelete(req.params.id);
+        
+        if (!contributor) {
+            return res.status(404).json({ message: 'Contributor not found' });
+        }
+        
+        res.json({ message: 'Contributor deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting contributor', error: error.message });
+    }
+});
+
+// Routes
+app.get('/', (req, res) => {
+    // Redirect root URL directly to contributors page
+    res.redirect('/contributors');
+});
+
+// Serve the public contributors page
+app.get('/contributors', (req, res) => {
+    res.render('contributors');
+});
+
+// Serve the contributor form page
+app.get('/contribute', (req, res) => {
+    res.render('contribute');
+});
+
+// Serve the admin dashboard
+app.get('/admin', (req, res) => {
+    res.render('admin-dashboard');
+});
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
