@@ -3,6 +3,14 @@ const router = express.Router();
 const mongoClient = require("../services/MongoClientService");
 const APIResponse = require("../DTOs/APIResponse");
 
+
+router.use(function(req, res, next) { next() });
+
+// 🐝@SkySaunders 4.29.2025 iss #15 
+router.get('/index_skyler', function(req, res, next) {
+    res.render('index_skyler', { pageTitle: 'SOBIE'});
+}); 
+
 router.use(function (req, res, next) {
   next();
 });
