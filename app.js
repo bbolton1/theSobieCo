@@ -58,7 +58,7 @@ app.use((req, res, next) => {
 });
 
 // 🐝@OmarVCRZ 4.25.2025 iss#1 (MongoDB Connection)
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI_OMAR)
      .then(() => console.log("MongoDB Connected!"))
      .catch(err => console.error("MongoDB Connection Failure:", err));
 

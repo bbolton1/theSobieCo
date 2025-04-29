@@ -13,6 +13,7 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
+    "crypto": "^1.0.1",
     "csurf": "^1.10.0",
     "csv-writer": "^1.6.0",
     "dotenv": "^16.5.0",
@@ -24,6 +25,7 @@
     "multer": "^1.4.5-lts.2",
     "nodemailer": "^6.10.1",
     "nodemon": "^3.1.9",
+    "router": "^2.2.0",
     "sha.js": "^2.4.11",
     "sha256": "^0.2.0"
   }
