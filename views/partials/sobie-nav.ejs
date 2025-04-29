@@ -1,48 +1,61 @@
-<nav id="navSobie" class="navbar fixed-top navbar-light bg-light navbar-expand-sm border-bottom">
- 
-	<span class="border-top border-bottom m-0 p-0 mt-2 "
-		style="-webkit-transform:rotate(35deg); -moz-transform:rotate(35deg); transform:rotate(35deg); position: absolute; top: 0; right: 0">
-		BETA
+
+<!-- Mason Schrader -->
+<nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+	<!-- Beta ribbon -->
+	<span class="absolute top-0 right-0 transform rotate-12 bg-yellow-300 text-xs font-bold px-2 py-1">
+	  BETA
 	</span>
-	<!-- sobie logo -->	
-	<a id="navSobieLogo" href="/" class="navbar-brand border-1 rounded-pill text-center my-2 mx-4 px-4 sobie-logo" href="#">
-		<span class="fw-bold text-center" style="letter-spacing: .5em; ">
-			S·O·B·I·E
-		</span>
-	</a>
-	
-		<span class="fs-6 text-start"><i>The Society of Business, Industry, & Economics</i></span>
-	<!-- hamburger button -->
-	<button class="navbar-toggler me-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-	</button>
-	
-	<!-- collapsible section start-->
-	<div class="collapse navbar-collapse ms-2"  id="collapsibleNavbar">
-  	
-		<ul class="navbar-nav mx-auto">
-			
-			<!-- call24 link -->
-			<li class="nav-item text-center">
-				<a  class="nav-link text-dark" href="docs/resources/sobie-2022-proceedings-guidelines.pdf" target="_blank" role="button">
-					<button id="navBtn" style="border: none; background-color: transparent;">Proceeding Guidelines</button>
-				</a>
-			</li>
-			<!-- proceedings link -->
-			<li class="nav-item text-center">
-				<a class="nav-link text-dark" href="docs/resources/sobie-2024-call-for-papers.pdf" target="_blank" role="button">
-					<button id="navBtn" style="border: none; background-color: transparent;">Call for Papers 2024</button>
-				</a>
-			</li>
+  
+	<div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+	  <!-- Logo -->
+	  <a href="/" class="text-xl font-bold tracking-widest px-4 py-2 border rounded-full">
+		S·O·B·I·E
+	  </a>
+	  <span class="italic text-sm hidden sm:inline">The Society of Business, Industry, & Economics</span>
+  
+	  <!-- Hamburger -->
+	  <button id="menu-btn" class="sm:hidden text-gray-700 focus:outline-none">
+		<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+			 viewBox="0 0 24 24">
+		  <path stroke-linecap="round" stroke-linejoin="round"
+				d="M4 6h16M4 12h16M4 18h16" />
+		</svg>
+	  </button>
+	</div>
+  
+	<!-- Menu (hidden on mobile) -->
+	<div id="mobile-menu" class="sm:hidden hidden px-4 pb-4">
+	  <ul class="flex flex-col space-y-2 text-center">
+		<li><a href="docs/resources/sobie-2022-proceedings-guidelines.pdf" target="_blank" class="hover:text-blue-700">Proceeding Guidelines</a></li>
+		<li><a href="docs/resources/sobie-2024-call-for-papers.pdf" target="_blank" class="hover:text-blue-700">Call for Papers 2024</a></li>
+		<li><a href="/programs" class="hover:text-blue-700">Programs</a></li>
+		<li><a href="/proceedings" class="hover:text-blue-700">Proceedings</a></li>
+		<li><a href="/admin" class="hover:text-blue-700">Admin Portal</a></li>
+	  </ul>
+	</div>
+  
+	<!-- Desktop Menu -->
+	<div class="hidden sm:flex justify-center py-2">
+	  <ul class="flex space-x-6 text-sm">
+		<li><a href="docs/resources/sobie-2022-proceedings-guidelines.pdf" target="_blank" class="hover:text-blue-700">Proceeding Guidelines</a></li>
+		<li><a href="docs/resources/sobie-2024-call-for-papers.pdf" target="_blank" class="hover:text-blue-700">Call for Papers 2024</a></li>
+		<li><a href="/programs" class="hover:text-blue-700">Programs</a></li>
+		<li><a href="/proceedings" class="hover:text-blue-700">Proceedings</a></li>
+		<li><a href="/admin" class="hover:text-blue-700">Admin Portal</a></li>
+	  </ul>
+	</div>
+  </nav>
 
-			<!-- programs page link -->
-			<li class="nav-item text-center">
-				<a class="nav-link text-dark" href="/programs" role="button">
-					<button id="navBtn" style="border: none; background-color: transparent;">Programs</button>
-	            </a>
-			</li>
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-			<!-- proceedings page link -->
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
+<!-- proceedings page link -->
 			<li class="nav-item text-center">
 				<a class="nav-link text-dark" href="/proceedings" role="button">
 					<button id="navBtn" style="border: none; background-color: transparent;">Proceedings</button>
