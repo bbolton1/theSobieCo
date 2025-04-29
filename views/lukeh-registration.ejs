@@ -1,0 +1,81 @@
+<!-- 🪣@lukehester 4.25.2025 iss #4 -->
+
+<%- include('partials/garrett-start') %> <%- include('partials/garrett-nav') %>
+    <!-- comment this out to see login/create_account page -->
+    <!-- <script>
+      const isLoggedIn = localStorage.getItem("loggedIn");
+      if (!isLoggedIn) {
+        alert("You must log in before registering.");
+        window.location.href = "/login";
+      }
+    </script> -->
+
+    <div class="container py-5">
+        <h2 class="display-4 text-center mb-4">Conference Registration</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card shadow-sm" style="max-width: 100%;">
+              <div class="card-body">
+                <h4 class="card-title">Register for Sobie '25</h4>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item py-2">
+                    <b>Registration Fee</b> is $325 (<b>Free</b> for Students) </li>
+                  <li class="list-group-item py-2">
+                    <b>Submit</b> Abstracts, Working or Complete Papers (submit during registration or later on)</li>
+                  <li class="list-group-item py-2">
+                    <b>April 1st</b> Conference & Research Submission Deadline</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow-sm" style="max-width: 100%;">
+              <div class="card-body">
+                <h4 class="card-title">SOBIE When & Where</h4>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item py-2">
+                    The SOBIE conference is held every <b>April</b></li>
+                  <li class="list-group-item py-2">
+                    <a href="https://maps.app.goo.gl/iBk2csgBd7S6YXyZ6" target="lakeside">Linkside Conference Center</a>
+                  <br>158 Sandestin Blvd N, Destin, FL 32550</li>
+                  <li class="list-group-item py-2">
+                    <a href="https://www.sandestin.com" target="sandestin">Sandestin Golf & Beach Resort</a> </li>
+                  <li class="list-group-item py-2">
+                    <a href="https://maps.app.goo.gl/uR3kCdU43txvP8zHA" target="mirimar">in Miramar Beach, Florida</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center mt-5">
+          <div class="col-md-8 col-lg-6">
+        <form action="messageofapproval.html" method="POST" class="card p-4 shadow-sm">
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" name="fullName" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" name="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="institution" class="form-label">Institution / Organization</label>
+            <input type="text" class="form-control" name="institution" />
+          </div>
+          <div class="mb-3">
+            <label for="role" class="form-label">Your Role</label>
+            <select class="form-select" name="role">
+              <option value="faculty">Faculty</option>
+              <option value="student">Student</option>
+              <option value="researcher">Researcher</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <button id="SubmitQuestBtn" type="submit" class="btn btn-primary w-100">Register</button>
+        </form>
+      </div>
+      </div>
+    </div>
+
+    <%- include('partials/garrett-footer') %> <%- include('partials/garrett-end') %>

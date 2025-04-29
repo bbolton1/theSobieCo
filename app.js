@@ -31,6 +31,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+//🪣@lukehester 4.25.2025 iss #4
+//We added this to be able to see the images on our pages
+app.use(express.static(__dirname + '/public'));
+
 // 🪣@OmarVCRZ 4.25.2025 iss#1 (View Engine Setup)
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

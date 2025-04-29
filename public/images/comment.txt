@@ -1,0 +1,4 @@
+<!-- 🪣@garrettbouldin 4.25.2025 iss #4 -->
+
+I could not add a comment directly into the images folder, so I placed this here to say I added
+the images folder and the destin.jpg and sobie.png files.
