@@ -15,7 +15,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Connect to MongoDB with better error handling
+// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI_BZ, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -146,10 +146,6 @@ app.delete('/api/contributors/:id', async (req, res) => {
 });
 
 // Routes
-app.get('/', (req, res) => {
-    // Redirect root URL directly to contributors page
-    res.redirect('/contributors');
-});
 
 // Serve the public contributors page
 app.get('/contributors', (req, res) => {
