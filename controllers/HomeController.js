@@ -11,6 +11,11 @@ router.get('/index_skyler', function(req, res, next) {
     res.render('index_skyler', { pageTitle: 'SOBIE'});
 }); 
 
+// 🐝@candice 4.29.2025 iss #10 
+router.get('/hotel', function(req, res, next) {
+  res.render('hotel', { pageTitle: 'SOBIE'});
+}); 
+
 router.use(function (req, res, next) {
   next();
 });
